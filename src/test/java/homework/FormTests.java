@@ -12,19 +12,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class FormTests {
 
-    private String firstName = "Boris";
-    private String lastName = "Britva";
-    private String userEmail = "braiva.boris@ya.ru";
-    private String gender = "Male";
-    private String mobileNumber = "8976543217";
-    private String dateOfBirth = "5 Sep 2050";
-    private String subjects1 = "English";
-    private String subjects2 = "Maths";
-    private String Hobbies = "Sports";
-    private String currentAddress = "moscow, red square, kremlin";
-    private String state = "Haryana";
-    private String city = "Karnal";
-
 
     @BeforeAll
     static void beforeAll() {
@@ -35,6 +22,20 @@ public class FormTests {
 
     @Test
     void fillFormTest() {
+
+        String firstName = "Boris";
+        String lastName = "Britva";
+        String userEmail = "braiva.boris@ya.ru";
+        String gender = "Male";
+        String mobileNumber = "8976543217";
+        String dateOfBirth = "5 Sep 2050";
+        String subjects1 = "English";
+        String subjects2 = "Maths";
+        String Hobbies = "Sports";
+        String currentAddress = "moscow, red square, kremlin";
+        String state = "Haryana";
+        String city = "Karnal";
+
         open("/");
 
         executeJavaScript("$('#fixedban').remove()");
@@ -59,20 +60,6 @@ public class FormTests {
         $("#city").click();
         $("#react-select-4-input").setValue(city).pressEnter();
 
- /*     Student Name dfdfd dfdfd
-        table-responsive
-        Label	Values
-        Student Name	dfdfd dfdfd
-        Student Email	d.ffd@fgf.rt
-        Gender	Male
-        Mobile	8976543217
-        Date of Birth	10 September,2023
-        Subjects	English, Maths
-        Hobbies	Sports, Reading, Music
-        Picture	368519730.jpg
-        Address	moscow, red square, kremlin
-        State and City	Haryana Karnal
- */
         $("#submit").click();
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(
